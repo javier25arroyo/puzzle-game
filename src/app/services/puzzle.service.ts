@@ -54,21 +54,6 @@ export class PuzzleService {
 
   // Cargar imágenes dinámicamente desde la carpeta assets/img
   private loadAvailableImages(): void {
-    // Comentamos la carga dinámica que puede fallar y usamos las imágenes estáticas
-    /*
-    this.http.get('assets/img/', { responseType: 'text' }).pipe(
-      map((html: string) => {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        const images = Array.from(doc.querySelectorAll('a'))
-          .map((a: HTMLAnchorElement) => a.href)
-          .filter(href => href.endsWith('.png') || href.endsWith('.jpg'));
-        this.availableImages = images;
-        this.currentImage = this.availableImages[0];
-        this.initializeGame();
-      })
-    ).subscribe();
-    */
     
     // Inicializamos directamente con las imágenes conocidas
     this.currentImage = this.availableImages[0];
