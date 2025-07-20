@@ -38,6 +38,10 @@ export class PuzzleService {
   private isCompletedSubject = new BehaviorSubject<boolean>(false);
   isCompleted$ = this.isCompletedSubject.asObservable();
 
+  // Observable para el contador de movimientos
+  private moveCounterSubject = new BehaviorSubject<number>(0);
+  moveCounter$ = this.moveCounterSubject.asObservable();
+
   // Pieza seleccionada actualmente (para intercambio)
   private selectedPiece: PuzzlePiece | null = null;
 
@@ -114,6 +118,7 @@ export class PuzzleService {
     
     this.puzzleBoardSubject.next(pieces);
     this.isCompletedSubject.next(false);
+    this.moveCounterSubject.next(0);
   }
 
   // Asegura que el rompecabezas no esté resuelto después de mezclar
@@ -184,6 +189,7 @@ export class PuzzleService {
     pieces[piece2Index].currentPosition = tempPosition;
 
     this.puzzleBoardSubject.next([...pieces]);
+    this.moveCounterSubject.next(this.moveCounterSubject.value + 1);
     this.checkCompletion();
   }
 

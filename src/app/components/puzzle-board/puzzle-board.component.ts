@@ -15,6 +15,7 @@ export class PuzzleBoardComponent implements OnInit {
   isCompleted: boolean = false;
   availableImages: string[] = [];
   currentImage: string = '';
+  moveCounter: number = 0;
   
   constructor(private puzzleService: PuzzleService) {}
 
@@ -27,6 +28,11 @@ export class PuzzleBoardComponent implements OnInit {
     // Suscribirse a los cambios en el estado de completado
     this.puzzleService.isCompleted$.subscribe(isCompleted => {
       this.isCompleted = isCompleted;
+    });
+
+    // Suscribirse al contador de movimientos
+    this.puzzleService.moveCounter$.subscribe(moves => {
+      this.moveCounter = moves;
     });
 
     // Obtener la imagen actual
