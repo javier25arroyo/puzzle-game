@@ -1,7 +1,7 @@
 .puzzle-main-layout {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   gap: 32px;
   width: 100%;
@@ -12,7 +12,7 @@
 }
 
 .sidebar {
-  width: 220px;
+  width: 300px;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.10);
@@ -44,13 +44,15 @@
 
 .image-options {
   display: flex;
-  flex-direction: column;
-  gap: 18px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
   width: 100%;
 }
 
 .image-option {
-  width: 100%;
+  width: calc(50% - 10px);
   border: 2px solid #ccc;
   border-radius: 10px;
   overflow: hidden;
