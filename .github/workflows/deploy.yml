@@ -9,6 +9,10 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
 
     steps:
     - name: Checkout repository
@@ -26,10 +30,12 @@ jobs:
       run: npm install -g @angular/cli
 
     - name: Build application
-      run: ng build --base-href /rompecabezas/
+      run: ng build --base-href /puzzle-game/
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./dist/rompecabezas
+        publish_branch: gh-pages
+        force_orphan: true
