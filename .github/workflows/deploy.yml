@@ -30,12 +30,12 @@ jobs:
       run: npm install -g @angular/cli
 
     - name: Build application
-      run: ng build --base-href /puzzle-game/
+      run: ng build --base-href /puzzle-game/ --output-path dist/puzzle-game
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist/rompecabezas
+        publish_dir: ./dist/puzzle-game
         publish_branch: gh-pages
         force_orphan: true
