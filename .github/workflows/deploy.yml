@@ -33,8 +33,18 @@ jobs:
     - name: Build application
       run: ng build --configuration production --base-href /puzzle-game/
 
+    - name: Verify build output
+      run: |
+        echo "=== Build output structure ==="
+        ls -la dist/rompecabezas/browser/
+        echo "=== Checking for index.html ==="
+        test -f dist/rompecabezas/browser/index.html && echo "✅ index.html found" || echo "❌ index.html NOT found"
+
     - name: Copy index.html to 404.html (for SPA routing)
       run: cp dist/rompecabezas/browser/index.html dist/rompecabezas/browser/404.html
+
+    - name: Add .nojekyll file
+      run: touch dist/rompecabezas/browser/.nojekyll
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
