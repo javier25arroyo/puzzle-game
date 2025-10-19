@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy Angular Game to GitHub Pages
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
     - name: Install Angular CLI
       run: npm install -g @angular/cli
 
-    - name: Build application
+    - name: Build Angular app
       run: ng build --base-href /puzzle-game/ --output-path dist/puzzle-game
 
     - name: Deploy to GitHub Pages
